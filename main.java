@@ -1,40 +1,34 @@
 import java.util.Scanner;
+public class main{
+    public static void main(String[] argc){
 
-public class main {
-    public static void main (String[] args) {
+        // compound interest calculator
 
-        // SHOPPING CART PROGRAM
+        Scanner scanner = new Scanner (System.in);
 
-        Scanner scanner = new Scanner(System.in);
+        double principal;
+        double rate;
+        int timescompounded;
+        int years;
+        double amount;
 
-        String item;
-        double price;
-        int quantity;
-        char currency ='$';
-        double total;
+        System.out.print("Enter the principal amount: ");
+        principal = scanner.nextDouble();
 
-        System.out.print("What item would you like to buy? ");
-        item = scanner.nextLine();
+        System.out.print("Enter the interest rate (in %): ");
+        rate = scanner.nextDouble() / 100;
 
-        System.out.print("What is price of each? ");
-        price = scanner.nextDouble();
+        System.out.print("Enter the # of times compounded per year: ");
+        timescompounded = scanner.nextInt();
 
-        System.out.print("How many would you like? ");
-        quantity = scanner.nextInt();
+        System.out.print("Enter the # of years: ");
+        years = scanner.nextInt();
 
-        total = price * quantity;
+        amount = principal * Math.pow(1 + rate / timescompounded, timescompounded * years);
 
-        System.out.println("\nYou have bought " + quantity + " " + item +"/s");
-        System.out.println("Your total is " + currency + total);
-
+        System.out.printf("The amount after %d years is $%.2f", years, amount);
 
         scanner.close();
-
-
-
-
-
-
 
     }
 }
