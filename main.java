@@ -1,38 +1,28 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 public class main {
-    public static void main(String[] argc) {
+    public static void main (String[] args){
 
-        // WEIGHT CONVERSION PROGRAM
+        Scanner scanner = new Scanner (System.in);
 
-        Scanner scanner = new Scanner(System.in);
+        double temp;
+        double newTemp;
+        String unit;
 
-        double weight;
-        double newWeight;
-        int choice;
+        System.out.print("Enter the temprature: ");
+        temp = scanner.nextDouble();
 
-        System.out.println("Weight conversion program");
-        System.out.println("1; convert lbs to kgs");
-        System.out.println("2: convert kgs to lbs");
+        System.out.print("Convert to calsius or fahreheit? (C or F): ");
+        unit = scanner.next().toUpperCase();
 
-        System.out.print("choose an option: ");
-        choice = scanner.nextInt();
+        // (condition)n ? ture : false
 
-        if(choice ==1){
-            System.out.print("Enter the weight in lbs: ");
-            weight = scanner.nextDouble();
-            newWeight = weight *  0.453592;
-            System.out.printf("The new weight in kgs is: %.2f", newWeight);
-        }
-        if(choice ==2){
-            System.out.print("Enter the weight in kgs: ");
-            weight = scanner.nextDouble();
-            newWeight = weight *  2.20462;
-            System.out.printf("The new weight in lbs is: %.2f", newWeight);
-        }
-        else{
-            System.out.println(" That was not a valid choice");
-        }
+        newTemp = (unit.equals("C")) ? (temp -32) * 5 / 9 : (temp * 5 / 9) +32;
+
+        System.out.printf("%.1f°%s", newTemp,unit);
+
+
         scanner.close();
 
-    }
+     }
 }
