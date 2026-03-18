@@ -1,28 +1,49 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
-public class main {
-    public static void main (String[] args){
+public class main{
+    public static void main(String[] argc) {
 
-        Scanner scanner = new Scanner (System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        double temp;
-        double newTemp;
-        String unit;
+        double num1;
+        double num2;
+        char operator;
+        double result= 0;
+        boolean validOperation = true;
 
-        System.out.print("Enter the temprature: ");
-        temp = scanner.nextDouble();
+        System.out.print("Enter the first number: ");
+        num1 = scanner.nextDouble();
 
-        System.out.print("Convert to calsius or fahreheit? (C or F): ");
-        unit = scanner.next().toUpperCase();
+        System.out.print("Enter an operator (+, -, *, /, ^): ");
+        operator = scanner.next().charAt(0);
 
-        // (condition)n ? ture : false
+        System.out.print("Enter the second number: ");
+        num2 = scanner.nextDouble();
 
-        newTemp = (unit.equals("C")) ? (temp -32) * 5 / 9 : (temp * 5 / 9) +32;
+        switch(operator){
+            case '+' -> result = num1 + num2;
+            case '-' -> result = num1 - num2;
+            case '*' -> result = num1 * num2;
+            case '/' -> {
+                if(num2 ==0){
+                    System.out.println("Can not devide by zero!");
+                    validOperation = false;
+                }
+                else{
+                    result = num1 / num2;
+                }
+            }
+            case '^' -> result = Math.pow(num1,num2);
+            default -> {
+                System.out.println("Invalid operator");
+                validOperation = false;
+            }
+        }
 
-        System.out.printf("%.1f°%s", newTemp,unit);
-
+        if(validOperation){
+            System.out.println(result);
+        }
 
         scanner.close();
 
-     }
+    }
 }
